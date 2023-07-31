@@ -77,7 +77,7 @@ class main implements renderable, templatable {
         ];
 
         foreach ($this->measures as $measure) {
-            $measure->hassubtitle = !empty($measure->subtitle);
+            $measure->hassubtitle = !empty($measure->subtitle) && count($this->measures) > 1;
 
             foreach ($measure->data as $data) {
                 if (!empty($data->type)) {

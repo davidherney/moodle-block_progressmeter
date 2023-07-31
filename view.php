@@ -27,7 +27,7 @@ require_once $CFG->libdir.'/adminlib.php';
 require_once 'locallib.php';
 
 $type = optional_param('t', 'withcompletion', PARAM_ALPHA);
-$mode = optional_param('m', 'u', PARAM_ALPHA);
+$mode = optional_param('m', 'user', PARAM_ALPHA);
 
 $systemcontext = context_system::instance();
 
@@ -38,6 +38,10 @@ if (isguestuser()) {
     $url = new moodle_url($CFG->wwwroot);
     redirect($url);
     die();
+}
+
+if (!in_array($mode, ['user', 'team'])) {
+    $mode = 'user';
 }
 
 // Only the available types.

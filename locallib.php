@@ -152,7 +152,7 @@ function block_progressmeter_loaddata() {
     // Only available if recognize roles to students.
     $studentroles = $CFG->gradebookroles;
     if (empty($studentroles)) {
-        return $this->content;
+        return [];
     }
 
     $measures = [];
@@ -169,7 +169,7 @@ function block_progressmeter_loaddata() {
                 WHERE c.visible = 1";
         $total = $DB->count_records_sql($sql, [$USER->id, CONTEXT_COURSE, $USER->id]);
 
-
+        $completed = 0;
         if ($total > 0) {
             $sql = "SELECT COUNT(DISTINCT c.id)
                         FROM {course} AS c
@@ -179,31 +179,32 @@ function block_progressmeter_loaddata() {
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND
                                                                 ra.contextid = cx.id AND ra.userid = ?";
             $completed = $DB->count_records_sql($sql, [$USER->id, CONTEXT_COURSE, $USER->id]);
-
-            $measure = new \stdClass();
-            $measure->type = 'user';
-            $measure->subtitle = get_string('usermeter', 'block_progressmeter');
-            $measure->percent = round($completed / $total * 100);
-            $measure->data = [
-                (object)[
-                    'type' => 'withcompletion',
-                    'value' => $total,
-                    'label' => get_string('label_withcompletion', 'block_progressmeter')
-                ],
-                (object)[
-                    'type' => 'completed',
-                    'value' => $completed,
-                    'label' => get_string('completed', 'block_progressmeter')
-                ],
-                (object)[
-                    'type' => 'pending',
-                    'value' => $total - $completed,
-                    'label' => get_string('pending', 'block_progressmeter')
-                ]
-            ];
-
-            $measures[] = $measure;
         }
+
+        $measure = new \stdClass();
+        $measure->type = 'user';
+        $measure->subtitle = get_string('usermeter', 'block_progressmeter');
+        $measure->percent = $total > 0 ? round($completed / $total * 100) : 0;
+
+        $measure->data = [
+            (object)[
+                'type' => 'withcompletion',
+                'value' => $total,
+                'label' => get_string('label_withcompletion', 'block_progressmeter')
+            ],
+            (object)[
+                'type' => 'completed',
+                'value' => $completed,
+                'label' => get_string('completed', 'block_progressmeter')
+            ],
+            (object)[
+                'type' => 'pending',
+                'value' => $total - $completed,
+                'label' => get_string('pending', 'block_progressmeter')
+            ]
+        ];
+
+        $measures[] = $measure;
 
         // Teams meter.
         $fieldid = $cachetime = get_config('block_progressmeter', 'bossfield');
