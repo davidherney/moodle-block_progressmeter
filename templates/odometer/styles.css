@@ -1,0 +1,421 @@
+.block_progressmeter-content.style-odometer .progressmeter_box {
+    margin-bottom: 20px;
+    background-image: none;
+}
+
+.block_progressmeter-content.style-odometer .progressmeter_level {
+    background-image: url(0-100.png);
+}
+
+/**Image positions*/
+.progressmeter_level {
+    background-repeat: no-repeat;
+    display: block;
+    margin: auto;
+    width: 149px;
+    height: 120px;
+}
+
+.progressmeter_level-0 {
+    background-position: 0px -0px;
+}
+
+.progressmeter_level-1 {
+    background-position: 0px -156px;
+}
+
+.progressmeter_level-2 {
+    background-position: 0px -312px;
+}
+
+.progressmeter_level-3 {
+    background-position: 0px -468px;
+}
+
+.progressmeter_level-4 {
+    background-position: 0px -624px;
+}
+
+.progressmeter_level-5 {
+    background-position: 0px -780px;
+}
+
+.progressmeter_level-6 {
+    background-position: 0px -936px;
+}
+
+.progressmeter_level-7 {
+    background-position: 0px -1092px;
+}
+
+.progressmeter_level-8 {
+    background-position: 0px -1248px;
+}
+
+.progressmeter_level-9 {
+    background-position: 0px -1404px;
+}
+
+.progressmeter_level-10 {
+    background-position: 0px -1560px;
+}
+
+.progressmeter_level-11 {
+    background-position: 0px -1716px;
+}
+
+.progressmeter_level-12 {
+    background-position: 0px -1872px;
+}
+
+.progressmeter_level-13 {
+    background-position: 0px -2028px;
+}
+
+.progressmeter_level-14 {
+    background-position: 0px -2184px;
+}
+
+.progressmeter_level-15 {
+    background-position: 0px -2340px;
+}
+
+.progressmeter_level-16 {
+    background-position: 0px -2496px;
+}
+
+.progressmeter_level-17 {
+    background-position: 0px -2652px;
+}
+
+.progressmeter_level-18 {
+    background-position: 0px -2808px;
+}
+
+.progressmeter_level-19 {
+    background-position: 0px -2964px;
+}
+
+.progressmeter_level-20 {
+    background-position: 0px -3120px;
+}
+
+.progressmeter_level-21 {
+    background-position: 0px -3276px;
+}
+
+.progressmeter_level-22 {
+    background-position: 0px -3432px;
+}
+
+.progressmeter_level-23 {
+    background-position: 0px -3588px;
+}
+
+.progressmeter_level-24 {
+    background-position: 0px -3744px;
+}
+
+.progressmeter_level-25 {
+    background-position: 0px -3900px;
+}
+
+.progressmeter_level-26 {
+    background-position: 0px -4056px;
+}
+
+.progressmeter_level-27 {
+    background-position: 0px -4212px;
+}
+
+.progressmeter_level-28 {
+    background-position: 0px -4368px;
+}
+
+.progressmeter_level-29 {
+    background-position: 0px -4524px;
+}
+
+.progressmeter_level-30 {
+    background-position: 0px -4680px;
+}
+
+.progressmeter_level-31 {
+    background-position: 0px -4836px;
+}
+
+.progressmeter_level-32 {
+    background-position: 0px -4992px;
+}
+
+.progressmeter_level-33 {
+    background-position: 0px -5148px;
+}
+
+.progressmeter_level-34 {
+    background-position: 0px -5304px;
+}
+
+.progressmeter_level-35 {
+    background-position: 0px -5460px;
+}
+
+.progressmeter_level-36 {
+    background-position: 0px -5616px;
+}
+
+.progressmeter_level-37 {
+    background-position: 0px -5772px;
+}
+
+.progressmeter_level-38 {
+    background-position: 0px -5928px;
+}
+
+.progressmeter_level-39 {
+    background-position: 0px -6084px;
+}
+
+.progressmeter_level-40 {
+    background-position: 0px -6240px;
+}
+
+.progressmeter_level-41 {
+    background-position: 0px -6396px;
+}
+
+.progressmeter_level-42 {
+    background-position: 0px -6552px;
+}
+
+.progressmeter_level-43 {
+    background-position: 0px -6708px;
+}
+
+.progressmeter_level-44 {
+    background-position: 0px -6864px;
+}
+
+.progressmeter_level-45 {
+    background-position: 0px -7020px;
+}
+
+.progressmeter_level-46 {
+    background-position: 0px -7176px;
+}
+
+.progressmeter_level-47 {
+    background-position: 0px -7332px;
+}
+
+.progressmeter_level-48 {
+    background-position: 0px -7488px;
+}
+
+.progressmeter_level-49 {
+    background-position: 0px -7644px;
+}
+
+.progressmeter_level-50 {
+    background-position: 0px -7800px;
+}
+
+.progressmeter_level-51 {
+    background-position: 0px -7956px;
+}
+
+.progressmeter_level-52 {
+    background-position: 0px -8112px;
+}
+
+.progressmeter_level-53 {
+    background-position: 0px -8268px;
+}
+
+.progressmeter_level-54 {
+    background-position: 0px -8424px;
+}
+
+.progressmeter_level-55 {
+    background-position: 0px -8580px;
+}
+
+.progressmeter_level-56 {
+    background-position: 0px -8736px;
+}
+
+.progressmeter_level-57 {
+    background-position: 0px -8892px;
+}
+
+.progressmeter_level-58 {
+    background-position: 0px -9048px;
+}
+
+.progressmeter_level-59 {
+    background-position: 0px -9204px;
+}
+
+.progressmeter_level-60 {
+    background-position: 0px -9360px;
+}
+
+.progressmeter_level-61 {
+    background-position: 0px -9516px;
+}
+
+.progressmeter_level-62 {
+    background-position: 0px -9672px;
+}
+
+.progressmeter_level-63 {
+    background-position: 0px -9828px;
+}
+
+.progressmeter_level-64 {
+    background-position: 0px -9984px;
+}
+
+.progressmeter_level-65 {
+    background-position: 0px -10140px;
+}
+
+.progressmeter_level-66 {
+    background-position: 0px -10296px;
+}
+
+.progressmeter_level-67 {
+    background-position: 0px -10452px;
+}
+
+.progressmeter_level-68 {
+    background-position: 0px -10608px;
+}
+
+.progressmeter_level-69 {
+    background-position: 0px -10764px;
+}
+
+.progressmeter_level-70 {
+    background-position: 0px -10920px;
+}
+
+.progressmeter_level-71 {
+    background-position: 0px -11076px;
+}
+
+.progressmeter_level-72 {
+    background-position: 0px -11232px;
+}
+
+.progressmeter_level-73 {
+    background-position: 0px -11388px;
+}
+
+.progressmeter_level-74 {
+    background-position: 0px -11544px;
+}
+
+.progressmeter_level-75 {
+    background-position: 0px -11700px;
+}
+
+.progressmeter_level-76 {
+    background-position: 0px -11856px;
+}
+
+.progressmeter_level-77 {
+    background-position: 0px -12012px;
+}
+
+.progressmeter_level-78 {
+    background-position: 0px -12168px;
+}
+
+.progressmeter_level-79 {
+    background-position: 0px -12324px;
+}
+
+.progressmeter_level-80 {
+    background-position: 0px -12480px;
+}
+
+.progressmeter_level-81 {
+    background-position: 0px -12636px;
+}
+
+.progressmeter_level-82 {
+    background-position: 0px -12792px;
+}
+
+.progressmeter_level-83 {
+    background-position: 0px -12948px;
+}
+
+.progressmeter_level-84 {
+    background-position: 0px -13104px;
+}
+
+.progressmeter_level-85 {
+    background-position: 0px -13260px;
+}
+
+.progressmeter_level-86 {
+    background-position: 0px -13416px;
+}
+
+.progressmeter_level-87 {
+    background-position: 0px -13572px;
+}
+
+.progressmeter_level-88 {
+    background-position: 0px -13728px;
+}
+
+.progressmeter_level-89 {
+    background-position: 0px -13884px;
+}
+
+.progressmeter_level-90 {
+    background-position: 0px -14040px;
+}
+
+.progressmeter_level-91 {
+    background-position: 0px -14196px;
+}
+
+.progressmeter_level-92 {
+    background-position: 0px -14352px;
+}
+
+.progressmeter_level-93 {
+    background-position: 0px -14508px;
+}
+
+.progressmeter_level-94 {
+    background-position: 0px -14664px;
+}
+
+.progressmeter_level-95 {
+    background-position: 0px -14820px;
+}
+
+.progressmeter_level-96 {
+    background-position: 0px -14976px;
+}
+
+.progressmeter_level-97 {
+    background-position: 0px -15132px;
+}
+
+.progressmeter_level-98 {
+    background-position: 0px -15288px;
+}
+
+.progressmeter_level-99 {
+    background-position: 0px -15444px;
+}
+
+.progressmeter_level-100 {
+    background-position: 0px -15600px;
+}

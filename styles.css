@@ -1,0 +1,63 @@
+/* Default styles */
+.block_progressmeter-content .card {
+    margin-bottom: 20px;
+}
+
+.block_progressmeter-content .list-group {
+    border-radius: unset;
+}
+
+.block_progressmeter-content.style-default .progressmeter_pix {
+    background: url([[pix:block_progressmeter|default-bg]]) no-repeat center center;
+    width: 82px;
+    height: 200px;
+    margin: auto;
+    position: relative;
+    padding-top: 20px;
+}
+
+.block_progressmeter-content.style-default .progressmeter_range {
+    height: 100px;
+    position: relative;
+}
+
+.block_progressmeter-content.style-default .progressmeter_level:before {
+    background: url([[pix:block_progressmeter|default-top]]) no-repeat center center;
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 0;
+    height: 16px;
+    width: 27px;
+}
+
+.block_progressmeter-content.style-default .progressmeter_level {
+    width: 28px;
+    background: url([[pix:block_progressmeter|default-bar]]) repeat-y center center;
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    display: block;
+    margin: auto;
+}
+
+.block_progressmeter-content.style-default .progressmeter_value {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.block_progressmeter-content .badge {
+    color: #fff;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.block_progressmeter-content .list-group-item {
+    padding: 5px 5px 5px 10px;
+}
+
+.block_progressmeter-content .btn-box {
+    text-align: center;
+}
