@@ -177,8 +177,12 @@ function block_progressmeter_loaddata() {
                                         AND cc.timecompleted IS NOT NULL AND cc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND
-                                                                ra.contextid = cx.id AND ra.userid = ?";
+                                                                ra.contextid = cx.id AND ra.userid = ?
+                WHERE c.visible = 1";
             $completed = $DB->count_records_sql($sql, [$USER->id, CONTEXT_COURSE, $USER->id]);
+
+            // Fix for deleted courses and not clean completions.
+            $completed = $completed > $total ? $total : $completed;
         }
 
         $measure = new \stdClass();
