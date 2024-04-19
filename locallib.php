@@ -39,7 +39,7 @@ function block_progressmeter_getcourses($type, $mode) {
         return $courses;
     }
 
-    $fieldid = $cachetime = get_config('block_progressmeter', 'bossfield');
+    $fieldid = get_config('block_progressmeter', 'bossfield');
 
     if ($type == 'completed') {
 
@@ -211,7 +211,7 @@ function block_progressmeter_loaddata() {
         $measures[] = $measure;
 
         // Teams meter.
-        $fieldid = $cachetime = get_config('block_progressmeter', 'bossfield');
+        $fieldid = get_config('block_progressmeter', 'bossfield');
 
         if ($fieldid) {
 
