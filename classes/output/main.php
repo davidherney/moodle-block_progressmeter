@@ -129,7 +129,7 @@ class main implements renderable, templatable {
 
                 if ($course->enablecompletion) {
                     $progress = \core_completion\progress::get_course_progress_percentage($course);
-                    $course->progress = round($progress);
+                    $course->progress = $progress ? round($progress) : 0;
                     $course->hasprogress = !empty($progress) || $progress === 0;
                 }
 

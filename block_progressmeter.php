@@ -30,7 +30,7 @@ class block_progressmeter extends block_base {
     }
 
     function applicable_formats() {
-        return array('all' => true);
+        return ['all' => true];
     }
 
     function has_config() {
