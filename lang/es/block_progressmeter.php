@@ -47,6 +47,7 @@ $string['style_help'] = 'Estilo de visualización del bloque';
 $string['style_default'] = 'Por defecto';
 $string['style_circle'] = 'Círculo';
 $string['style_odometer'] = 'Odómetro';
+$string['style_odometer_fycolearning'] = 'Odómetro FycoLearning';
 $string['notuseboss'] = 'No usar funcionalida de Jefe/Equipo';
 $string['bossfield'] = 'Campo de Jefe';
 $string['bossfield_help'] = 'Seleccione el campo que se utilizará para vincular con el Jefe';

@@ -1,0 +1,399 @@
+.block_progressmeter-content.style-odometer-fycolearning {
+  --progressmeter-divider-color: color-mix(
+    in srgb,
+    var(--primary, #000),
+    transparent 80%
+  );
+  --progressmeter-box-shadow: 0 0 8px 0px #d0d0d080;
+  --list-group-item-color-primary: var(--primary, #000);
+  --list-group-item-color-success: var(--success, #28a745);
+  --list-group-item-color-warning: var(--warning, #d8a306);
+
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.block_progressmeter-content.style-odometer-fycolearning .progressmeter_box {
+  margin-bottom: 20px;
+  background-image: none;
+  border-width: 0;
+  padding: 24px 16px;
+  box-shadow: var(--progressmeter-box-shadow);
+}
+
+.block_progressmeter-content.style-odometer-fycolearning
+  .progressmeter_box
+  ul.list-group {
+  border-radius: 0;
+  gap: 32px;
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--progressmeter-divider-color, #d0d0d080);
+  margin-top: 17px;
+  padding-top: 32px;
+}
+
+.block_progressmeter-content.style-odometer-fycolearning
+  .progressmeter_box
+  .list-group-item {
+  --item-color: var(--dark, #343a40);
+  --item-bg-color: color-mix(in srgb, var(--item-color), transparent 86%);
+
+  color: var(--primary, #000);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: transparent;
+  border-width: 0;
+  gap: 12px;
+}
+
+.block_progressmeter-content.style-odometer-fycolearning
+  .progressmeter_box
+  .list-group-item-primary {
+  --item-color: var(--list-group-item-color-primary);
+}
+
+.block_progressmeter-content.style-odometer-fycolearning
+  .progressmeter_box
+  .list-group-item-success {
+  --item-color: var(--list-group-item-color-success);
+}
+
+.block_progressmeter-content.style-odometer-fycolearning
+  .progressmeter_box
+  .list-group-item-odometer-fycolearning {
+  --item-color: var(--list-group-item-color-warning);
+}
+
+.block_progressmeter-content.style-odometer-fycolearning
+  .progressmeter_box
+  .list-group-item
+  .badge {
+  font-weight: 400;
+  padding: 8px 20px;
+  border-radius: 12px !important;
+  border: 2px solid var(--item-color);
+  background-color: var(--item-bg-color) !important;
+  color: var(--item-color);
+  min-width: 60px;
+}
+
+.block_progressmeter-content.style-odometer-fycolearning .progressmeter_level {
+  background-image: url(0-100.png);
+}
+
+/**Image and its position*/
+.progressmeter_level {
+  background-repeat: no-repeat;
+  display: block;
+  width: 210px;
+  height: 123px;
+  background-size: 210px 12423px;
+  margin-top: 8px;
+  margin-inline: auto;
+}
+
+.progressmeter_level-0 {
+  background-position: 0px -0px;
+}
+.progressmeter_level-1 {
+  background-position: 0px -123px;
+}
+.progressmeter_level-2 {
+  background-position: 0px -246px;
+}
+.progressmeter_level-3 {
+  background-position: 0px -369px;
+}
+.progressmeter_level-4 {
+  background-position: 0px -492px;
+}
+.progressmeter_level-5 {
+  background-position: 0px -615px;
+}
+.progressmeter_level-6 {
+  background-position: 0px -738px;
+}
+.progressmeter_level-7 {
+  background-position: 0px -861px;
+}
+.progressmeter_level-8 {
+  background-position: 0px -984px;
+}
+.progressmeter_level-9 {
+  background-position: 0px -1107px;
+}
+.progressmeter_level-10 {
+  background-position: 0px -1230px;
+}
+.progressmeter_level-11 {
+  background-position: 0px -1353px;
+}
+.progressmeter_level-12 {
+  background-position: 0px -1476px;
+}
+.progressmeter_level-13 {
+  background-position: 0px -1599px;
+}
+.progressmeter_level-14 {
+  background-position: 0px -1722px;
+}
+.progressmeter_level-15 {
+  background-position: 0px -1845px;
+}
+.progressmeter_level-16 {
+  background-position: 0px -1968px;
+}
+.progressmeter_level-17 {
+  background-position: 0px -2091px;
+}
+.progressmeter_level-18 {
+  background-position: 0px -2214px;
+}
+.progressmeter_level-19 {
+  background-position: 0px -2337px;
+}
+.progressmeter_level-20 {
+  background-position: 0px -2460px;
+}
+.progressmeter_level-21 {
+  background-position: 0px -2583px;
+}
+.progressmeter_level-22 {
+  background-position: 0px -2706px;
+}
+.progressmeter_level-23 {
+  background-position: 0px -2829px;
+}
+.progressmeter_level-24 {
+  background-position: 0px -2952px;
+}
+.progressmeter_level-25 {
+  background-position: 0px -3075px;
+}
+.progressmeter_level-26 {
+  background-position: 0px -3198px;
+}
+.progressmeter_level-27 {
+  background-position: 0px -3321px;
+}
+.progressmeter_level-28 {
+  background-position: 0px -3444px;
+}
+.progressmeter_level-29 {
+  background-position: 0px -3567px;
+}
+.progressmeter_level-30 {
+  background-position: 0px -3690px;
+}
+.progressmeter_level-31 {
+  background-position: 0px -3813px;
+}
+.progressmeter_level-32 {
+  background-position: 0px -3936px;
+}
+.progressmeter_level-33 {
+  background-position: 0px -4059px;
+}
+.progressmeter_level-34 {
+  background-position: 0px -4182px;
+}
+.progressmeter_level-35 {
+  background-position: 0px -4305px;
+}
+.progressmeter_level-36 {
+  background-position: 0px -4428px;
+}
+.progressmeter_level-37 {
+  background-position: 0px -4551px;
+}
+.progressmeter_level-38 {
+  background-position: 0px -4674px;
+}
+.progressmeter_level-39 {
+  background-position: 0px -4797px;
+}
+.progressmeter_level-40 {
+  background-position: 0px -4920px;
+}
+.progressmeter_level-41 {
+  background-position: 0px -5043px;
+}
+.progressmeter_level-42 {
+  background-position: 0px -5166px;
+}
+.progressmeter_level-43 {
+  background-position: 0px -5289px;
+}
+.progressmeter_level-44 {
+  background-position: 0px -5412px;
+}
+.progressmeter_level-45 {
+  background-position: 0px -5535px;
+}
+.progressmeter_level-46 {
+  background-position: 0px -5658px;
+}
+.progressmeter_level-47 {
+  background-position: 0px -5781px;
+}
+.progressmeter_level-48 {
+  background-position: 0px -5904px;
+}
+.progressmeter_level-49 {
+  background-position: 0px -6027px;
+}
+.progressmeter_level-50 {
+  background-position: 0px -6150px;
+}
+.progressmeter_level-51 {
+  background-position: 0px -6273px;
+}
+.progressmeter_level-52 {
+  background-position: 0px -6396px;
+}
+.progressmeter_level-53 {
+  background-position: 0px -6519px;
+}
+.progressmeter_level-54 {
+  background-position: 0px -6642px;
+}
+.progressmeter_level-55 {
+  background-position: 0px -6765px;
+}
+.progressmeter_level-56 {
+  background-position: 0px -6888px;
+}
+.progressmeter_level-57 {
+  background-position: 0px -7011px;
+}
+.progressmeter_level-58 {
+  background-position: 0px -7134px;
+}
+.progressmeter_level-59 {
+  background-position: 0px -7257px;
+}
+.progressmeter_level-60 {
+  background-position: 0px -7380px;
+}
+.progressmeter_level-61 {
+  background-position: 0px -7503px;
+}
+.progressmeter_level-62 {
+  background-position: 0px -7626px;
+}
+.progressmeter_level-63 {
+  background-position: 0px -7749px;
+}
+.progressmeter_level-64 {
+  background-position: 0px -7872px;
+}
+.progressmeter_level-65 {
+  background-position: 0px -7995px;
+}
+.progressmeter_level-66 {
+  background-position: 0px -8118px;
+}
+.progressmeter_level-67 {
+  background-position: 0px -8241px;
+}
+.progressmeter_level-68 {
+  background-position: 0px -8364px;
+}
+.progressmeter_level-69 {
+  background-position: 0px -8487px;
+}
+.progressmeter_level-70 {
+  background-position: 0px -8610px;
+}
+.progressmeter_level-71 {
+  background-position: 0px -8733px;
+}
+.progressmeter_level-72 {
+  background-position: 0px -8856px;
+}
+.progressmeter_level-73 {
+  background-position: 0px -8979px;
+}
+.progressmeter_level-74 {
+  background-position: 0px -9102px;
+}
+.progressmeter_level-75 {
+  background-position: 0px -9225px;
+}
+.progressmeter_level-76 {
+  background-position: 0px -9348px;
+}
+.progressmeter_level-77 {
+  background-position: 0px -9471px;
+}
+.progressmeter_level-78 {
+  background-position: 0px -9594px;
+}
+.progressmeter_level-79 {
+  background-position: 0px -9717px;
+}
+.progressmeter_level-80 {
+  background-position: 0px -9840px;
+}
+.progressmeter_level-81 {
+  background-position: 0px -9963px;
+}
+.progressmeter_level-82 {
+  background-position: 0px -10086px;
+}
+.progressmeter_level-83 {
+  background-position: 0px -10209px;
+}
+.progressmeter_level-84 {
+  background-position: 0px -10332px;
+}
+.progressmeter_level-85 {
+  background-position: 0px -10455px;
+}
+.progressmeter_level-86 {
+  background-position: 0px -10578px;
+}
+.progressmeter_level-87 {
+  background-position: 0px -10701px;
+}
+.progressmeter_level-88 {
+  background-position: 0px -10824px;
+}
+.progressmeter_level-89 {
+  background-position: 0px -10947px;
+}
+.progressmeter_level-90 {
+  background-position: 0px -11070px;
+}
+.progressmeter_level-91 {
+  background-position: 0px -11193px;
+}
+.progressmeter_level-92 {
+  background-position: 0px -11316px;
+}
+.progressmeter_level-93 {
+  background-position: 0px -11439px;
+}
+.progressmeter_level-94 {
+  background-position: 0px -11562px;
+}
+.progressmeter_level-95 {
+  background-position: 0px -11685px;
+}
+.progressmeter_level-96 {
+  background-position: 0px -11808px;
+}
+.progressmeter_level-97 {
+  background-position: 0px -11931px;
+}
+.progressmeter_level-98 {
+  background-position: 0px -12054px;
+}
+.progressmeter_level-99 {
+  background-position: 0px -12177px;
+}
+.progressmeter_level-100 {
+  background-position: 0px -12300px;
+}
