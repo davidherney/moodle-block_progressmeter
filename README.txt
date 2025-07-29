@@ -3,7 +3,7 @@ BLOCK Progress meter
 
 Block to show the user's progress in enrolled courses.
 
-Package tested in: moodle 4.1+.
+Package tested in: moodle 4.1+ - 4.5+.
 
 QUICK INSTALL
 ==============
@@ -19,6 +19,8 @@ Financiado por Engagement SAS y BambuCo SAS.
 
 IN VERSION
 =============
+2023072702:
+New odometer-fycolearning template. By @leono286
 
 2023072701:
 MATURITY STABLE

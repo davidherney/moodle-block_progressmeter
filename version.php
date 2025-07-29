@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = 2023072701.01;
+$plugin->version = 2023072702;
 $plugin->requires = 2022112804; // Requires this Moodle version
 $plugin->component = 'block_progressmeter'; // Full name of the plugin (used for diagnostics)
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '(.)x(.)';
+$plugin->release = '(.)-(.)';
