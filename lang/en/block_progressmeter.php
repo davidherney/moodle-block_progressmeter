@@ -47,6 +47,7 @@ $string['style_help'] = 'Select the style of the block';
 $string['style_default'] = 'Default';
 $string['style_circle'] = 'Circle';
 $string['style_odometer'] = 'Odometer';
+$string['style_odometer_fycolearning'] = 'FycoLearning Odometer';
 $string['notuseboss'] = 'Do not use boss feature';
 $string['bossfield'] = 'Boss field';
 $string['bossfield_help'] = 'Select the field that will be used to link to a boss';

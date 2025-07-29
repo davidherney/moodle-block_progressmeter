@@ -48,6 +48,7 @@ if ($ADMIN->fulltree) {
         'default' => get_string('style_default', 'block_progressmeter'),
         'circle' => get_string('style_circle', 'block_progressmeter'),
         'odometer' => get_string('style_odometer', 'block_progressmeter'),
+        'odometer-fycolearning' => get_string('style_odometer_fycolearning', 'block_progressmeter'),
     ];
     $settings->add(new admin_setting_configselect('block_progressmeter/style',
                                                     get_string('style', 'block_progressmeter'),
