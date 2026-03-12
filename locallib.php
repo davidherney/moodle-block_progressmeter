@@ -261,6 +261,17 @@ function block_progressmeter_loaddata() {
                             WHERE c.visible = 1";
                     $completed = $DB->count_records_sql($sql, [CONTEXT_COURSE]);
 
+                    $sql = "SELECT COUNT(DISTINCT c.id)
+                        FROM {course} AS c
+                            INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
+                            INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
+                            INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$CFG->gradebookroles}) AND ra.contextid = cx.id
+                            INNER JOIN {user_info_data} AS uid ON uid.fieldid = ? AND uid.data = ? AND uid.userid = ra.userid
+                            LEFT JOIN {course_completions} AS cc ON cc.course = c.id
+                        WHERE c.visible = 1 AND c.enablecompletion = 1 AND (cc.id IS NULL OR cc.timecompleted IS NULL)";
+                    $pending = $DB->count_records_sql($sql, [CONTEXT_COURSE, $fieldid, $USER->username]);
+
+
                     $measure = new \stdClass();
                     $measure->type = 'team';
                     $measure->subtitle = get_string('teammeter', 'block_progressmeter');
@@ -274,12 +285,12 @@ function block_progressmeter_loaddata() {
                         (object)[
                             'type' => 'completed',
                             'value' => $completed,
-                            'label' => get_string('completed', 'block_progressmeter')
+                            'label' => get_string('completedbyone', 'block_progressmeter')
                         ],
                         (object)[
                             'type' => 'pending',
-                            'value' => $total - $completed,
-                            'label' => get_string('pending', 'block_progressmeter')
+                            'value' => $pending,
+                            'label' => get_string('pendingbyone', 'block_progressmeter')
                         ]
                     ];
 
