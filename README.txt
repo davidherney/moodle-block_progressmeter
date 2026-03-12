@@ -19,6 +19,9 @@ Financiado por Engagement SAS y BambuCo SAS.
 
 IN VERSION
 =============
+2023072703:
+Enrolments are considered even if they do not have calculated completion
+
 2023072702:
 New odometer-fycolearning template. By @leono286
 
