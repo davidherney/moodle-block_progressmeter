@@ -42,21 +42,26 @@ function block_progressmeter_getcourses($type, $mode) {
     $fieldid = get_config('block_progressmeter', 'bossfield');
 
     if ($type == 'completed') {
-
-        if ($mode == 'team' && $fieldid) {
-            $sql = "SELECT DISTINCT c.*
+        if ($mode == 'team') {
+            if (!$fieldid) {
+                $courses = [];
+            } else {
+                $sql = "SELECT DISTINCT c.*
                     FROM {course} AS c
-                        INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1
-                                        AND cc.timecompleted IS NOT NULL AND cc.course = c.id
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND ra.contextid = cx.id
                         INNER JOIN {user_info_data} AS uid ON uid.fieldid = ? AND uid.data = ? AND uid.userid = ra.userid
+                        INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1
+                                        AND cc.timecompleted IS NOT NULL AND cc.course = c.id AND cc.userid = ra.userid
                     WHERE c.visible = 1
                     ORDER BY c.sortorder ASC";
-            $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $fieldid, $USER->username]);
+                $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $fieldid, $USER->username]);
+            }
         } else {
             $sql = "SELECT c.*
                     FROM {course} AS c
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid = ?
                                         AND cc.timecompleted IS NOT NULL AND cc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
@@ -71,48 +76,52 @@ function block_progressmeter_getcourses($type, $mode) {
         if ($mode == 'team' && $fieldid) {
             $sql = "SELECT DISTINCT c.*
                     FROM {course} AS c
-                        INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.course = c.id
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND ra.contextid = cx.id
                         INNER JOIN {user_info_data} AS uid ON uid.fieldid = ? AND uid.data = ? AND uid.userid = ra.userid
-                    WHERE c.visible = 1
+                        LEFT JOIN {course_completions} AS cc ON cc.course = c.id
+                    WHERE c.visible = 1 AND c.enablecompletion = 1
                     ORDER BY c.sortorder ASC";
             $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $fieldid, $USER->username]);
         } else {
-            $sql = "SELECT c.*
+            $sql = "SELECT DISTINCT c.*
                     FROM {course} AS c
-                        INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid = ? AND cc.course = c.id
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND
                                                                 ra.contextid = cx.id AND ra.userid = ?
-                    WHERE c.visible = 1
+                    WHERE c.visible = 1 AND c.enablecompletion = 1
                     ORDER BY c.sortorder ASC";
-            $courses = $DB->get_records_sql($sql, [$USER->id, CONTEXT_COURSE, $USER->id]);
+            $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $USER->id]);
         }
-
     } else if ($type == 'pending') {
-        if ($mode == 'team' && $fieldid) {
-            $sql = "SELECT DISTINCT c.*
+        if ($mode == 'team') {
+            if (!$fieldid) {
+                $courses = [];
+            } else {
+                $sql = "SELECT DISTINCT c.*
                     FROM {course} AS c
-                        INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND
-                                                                    cc.course = c.id AND cc.timecompleted IS NULL
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND ra.contextid = cx.id
                         INNER JOIN {user_info_data} AS uid ON uid.fieldid = ? AND uid.data = ? AND uid.userid = ra.userid
-                    WHERE c.visible = 1
+                        LEFT JOIN {course_completions} AS cc ON cc.course = c.id
+                    WHERE c.visible = 1 AND c.enablecompletion = 1 AND (cc.id IS NULL OR cc.timecompleted IS NULL)
                     ORDER BY c.sortorder ASC";
-            $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $fieldid, $USER->username]);
+                $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $fieldid, $USER->username]);
+            }
         } else {
             $sql = "SELECT DISTINCT c.*
                     FROM {course} AS c
-                        INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid = ? AND
-                                                                    cc.course = c.id AND cc.timecompleted IS NULL
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                         INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND
                                                             ra.contextid = cx.id AND ra.userid = ?
-                    WHERE c.visible = 1
+                        LEFT JOIN {course_completions} AS cc ON cc.userid = ? AND cc.course = c.id
+                    WHERE c.visible = 1 AND c.enablecompletion = 1 AND (cc.id IS NULL OR cc.timecompleted IS NULL)
                     ORDER BY c.sortorder ASC";
-            $courses = $DB->get_records_sql($sql, [$USER->id, CONTEXT_COURSE, $USER->id, $USER->id]);
+            $courses = $DB->get_records_sql($sql, [CONTEXT_COURSE, $USER->id, $USER->id]);
         }
     }
 
@@ -162,17 +171,18 @@ function block_progressmeter_loaddata() {
 
         $sql = "SELECT COUNT(DISTINCT c.id)
                 FROM {course} AS c
-                    INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid = ? AND cc.course = c.id
+                    INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                     INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
                     INNER JOIN {role_assignments} AS ra ON ra.roleid IN ({$studentroles}) AND
                                                             ra.contextid = cx.id AND ra.userid = ?
-                WHERE c.visible = 1";
-        $total = $DB->count_records_sql($sql, [$USER->id, CONTEXT_COURSE, $USER->id]);
+                WHERE c.visible = 1 AND c.enablecompletion = 1";
+        $total = $DB->count_records_sql($sql, [CONTEXT_COURSE, $USER->id]);
 
         $completed = 0;
         if ($total > 0) {
             $sql = "SELECT COUNT(DISTINCT c.id)
                         FROM {course} AS c
+                        INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                         INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid = ?
                                         AND cc.timecompleted IS NOT NULL AND cc.course = c.id
                         INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
@@ -214,7 +224,6 @@ function block_progressmeter_loaddata() {
         $fieldid = get_config('block_progressmeter', 'bossfield');
 
         if ($fieldid) {
-
             $sql = 'SELECT uid.userid FROM {user_info_data} AS uid
                         INNER JOIN {user} AS u ON u.id = uid.userid AND u.deleted = 0 AND u.suspended = 0
                                             AND uid.' . $DB->sql_compare_text('data') . ' = ' . $DB->sql_compare_text(':userid')
@@ -224,7 +233,6 @@ function block_progressmeter_loaddata() {
             $userslist = $DB->get_records_sql($sql, $params);
 
             if (count($userslist) > 0) {
-
                 $usersids = [];
                 foreach ($userslist as $one) {
                     $usersids[] = $one->userid;
@@ -232,12 +240,11 @@ function block_progressmeter_loaddata() {
 
                 $usersids = implode(',', $usersids);
 
-                $sql = "SELECT COUNT(DISTINCT c.id, cc.userid)
+                $sql = "SELECT COUNT(DISTINCT c.id, ra.userid)
                         FROM {course} AS c
-                            INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid IN ({$usersids})
-                                                                    AND cc.course = c.id
+                            INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                             INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
-                            INNER JOIN {role_assignments} AS ra ON ra.contextid = cx.id AND ra.userid = cc.userid
+                            INNER JOIN {role_assignments} AS ra ON ra.contextid = cx.id AND ra.userid IN ({$usersids})
                                                         AND ra.roleid IN ({$CFG->gradebookroles})
                         WHERE c.visible = 1";
                 $total = $DB->count_records_sql($sql, [CONTEXT_COURSE]);
@@ -245,6 +252,7 @@ function block_progressmeter_loaddata() {
                 if ($total > 0) {
                     $sql = "SELECT COUNT(DISTINCT c.id, cc.userid)
                             FROM {course} AS c
+                                INNER JOIN {course_completion_criteria} AS ccc ON ccc.course = c.id
                                 INNER JOIN {course_completions} AS cc ON c.enablecompletion = 1 AND cc.userid IN ({$usersids})
                                                 AND cc.timecompleted IS NOT NULL AND cc.course = c.id
                                 INNER JOIN {context} AS cx ON cx.instanceid = c.id AND cx.contextlevel = ?
